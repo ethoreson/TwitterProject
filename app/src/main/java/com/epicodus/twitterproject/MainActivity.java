@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     //private static final String TAG = MainActivity.class.getSimpleName();
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //default behavior, don't change
         setContentView(R.layout.activity_main); // use main activity activity_main
-        ButterKinfe.bind(this);
+        ButterKnife.bind(this);
 //
 //        mAppIntroTextView = (TextView) findViewById(R.id.appIntroTextView);
 //        mZipCodeText = (EditText) findViewById(R.id.zipCodeText);

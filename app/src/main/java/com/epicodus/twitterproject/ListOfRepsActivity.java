@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +13,7 @@ public class ListOfRepsActivity extends AppCompatActivity {
     private TextView mZipCodeTextView;
     private ListView mListView;
     private String[] representatives = new String[] {"Jim Ferrell", "Cyrus Habib", "Jay Inslee", "Dave Reichert", "Patty Murray", "Maria Cantwell", "Mike Pence", "Donald Trump"};
-
+    private String[] details = new String[] {"Mayor - D - @WAFederalWay", "Lieutenant Governor - D - @cyrushabib", "Governor - D - @GovInslee", "Congress Representative - R - @davereichert", "Senator - D - @PattyMurray", "Senator - D - @SenatorCantwell", "Vice President - R - @mike_pence", "President - R - @realDonaldTrump"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +22,7 @@ public class ListOfRepsActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
         mZipCodeTextView = (TextView) findViewById(R.id.zipCodeTextView);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, representatives);
+        MyRepsArrayAdapter adapter = new MyRepsArrayAdapter(this, android.R.layout.simple_list_item_1, representatives, details);
         mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
