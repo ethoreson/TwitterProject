@@ -1,9 +1,5 @@
 package com.epicodus.twitterproject;
 
-/**
- * Created by emiliethoreson on 9/8/17.
- */
-
 import android.support.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
