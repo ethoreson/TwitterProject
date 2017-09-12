@@ -21,9 +21,9 @@
         <activity android:name=".ListOfRepsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.twitterproject.MainActivity">
-            </meta-data>
+                android:value="com.epicodus.twitterproject.MainActivity"></meta-data>
         </activity>
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

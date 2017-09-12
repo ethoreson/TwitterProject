@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     //private static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
+    @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.zipCodeText) EditText mZipCodeText;
     @Bind(R.id.appIntroTextView) TextView mAppIntroTextView;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAppIntroTextView.setTypeface(droidFont);
 
         mFindRepsButton.setOnClickListener(this);
+        mAboutButton.setOnClickListener(this);
     }
         @Override
         public void onClick(View v) {
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String zipCode = mZipCodeText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, ListOfRepsActivity.class);
                 intent.putExtra("zipCode", zipCode);
+                startActivity(intent);
+            }
+            if(v == mAboutButton) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
             }
         }
