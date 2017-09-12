@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     //private static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
     @Bind(R.id.zipCodeText) EditText mZipCodeText;
@@ -23,22 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState); //default behavior, don't change
         setContentView(R.layout.activity_main); // use main activity activity_main
         ButterKnife.bind(this);
-//
-//        mAppIntroTextView = (TextView) findViewById(R.id.appIntroTextView);
-//        mZipCodeText = (EditText) findViewById(R.id.zipCodeText);
-//        mFindRepsButton = (Button) findViewById(R.id.findRepsButton);
 
         Typeface droidFont = Typeface.createFromAsset(getAssets(), "fonts/DroidSerifRegular.ttf");
         mAppIntroTextView.setTypeface(droidFont);
 
-        mFindRepsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String zipCode = mZipCodeText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, ListOfRepsActivity.class); //new instance of intent class
-                intent.putExtra("zipCode", zipCode);
-                startActivity(intent); //start activity method, takes line above
-            }
-        });
+        mFindRepsButton.setOnClickListener(this);
     }
-}
+        @Override
+        public void onClick(View v) {
+            if(v == mFindRepsButton) {
+                String zipCode = mZipCodeText.getText().toString();
+                Intent intent = new Intent(MainActivity.this, ListOfRepsActivity.class);
+                intent.putExtra("zipCode", zipCode);
+                startActivity(intent);
+            }
+        }
+    }
