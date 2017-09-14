@@ -22,7 +22,7 @@ public class Representative {
         return mName;
     }
 
-    public ArrayList<String> getmChannels() {
+    public ArrayList<String> getChannels() {
         return mChannels;
     }
 }

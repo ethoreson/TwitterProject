@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,15 +17,20 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 //
 public class GoogleService {
+
     public static void findRepresentatives(String zipCode, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOOGLE_BASE_URL).newBuilder();
+        urlBuilder.addQueryParameter(Constants.GOOGLE_ZIPCODE_QUERY_PARAMETER, zipCode);
+        String url = urlBuilder.build().toString();
+
  //      String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
-                .url("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0")
+                .url("https://www.googleapis.com/civicinfo/v2/representatives?address=" + zipCode + "&includeOffices=true&key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0")
                 .build();
 
         Call call = client.newCall(request);
@@ -45,10 +51,10 @@ public class GoogleService {
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
                     ArrayList<String> channels = new ArrayList<>();
-                    JSONArray channelsJSON = representativeJSON.getJSONArray("channels");
-
+                    JSONArray channelsJSON = representativeJSON.getJSONObject("channels")
+                            .getJSONArray("display_channels");
                     for (int y = 0; y < channelsJSON.length(); y++) {
-                        channels.add(channelsJSON.getJSONArray(y).get(0).toString());
+                        channels.add(channelsJSON.get(y).toString());
                     }
                     Representative representative = new Representative(name, party, channels);
                     representatives.add(representative);
