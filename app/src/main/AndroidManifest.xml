@@ -3,6 +3,7 @@
     package="com.epicodus.twitterproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--<activity android:name="android.permission.INTERNET"></activity>-->
     <activity
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,9 +16,8 @@
             android:name=".MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -27,8 +27,12 @@
                 android:value="com.epicodus.twitterproject.MainActivity"></meta-data>
         </activity>
 
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.epicodus.twitterproject.MainActivity"></meta-data>
+        </activity>
 
-        <!--<activity android:name="android.permission.INTERNET"></activity>-->
+
     </activity>
 </manifest>

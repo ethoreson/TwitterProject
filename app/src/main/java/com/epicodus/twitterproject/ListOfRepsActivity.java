@@ -14,10 +14,13 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 
 public class ListOfRepsActivity extends AppCompatActivity {
@@ -58,15 +61,13 @@ public class ListOfRepsActivity extends AppCompatActivity {
         final GoogleService googleService = new GoogleService();
         googleService.findRepresentatives(zipCode, new Callback() {
 
-            OkHttpClient client = new OkHttpClient();
-
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
 
             @Override
-            public void onResponse(Call call, Response, response) throws IOException {
+            public void onResponse(Call call, Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
                     Log.v(TAG, jsonData);
