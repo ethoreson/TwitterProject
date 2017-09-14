@@ -42,15 +42,15 @@
         android:id="@+id/zipCodeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextIcons"
-        android:hint="Enter Zip Code"
-        android:inputType="number"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="398dp"
         android:layout_below="@+id/appIntroTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp" />
+        android:layout_marginTop="67dp"
+        android:background="@color/colorTextIcons"
+        android:hint="Enter Address"
+        android:inputType="text"
+        android:padding="5dp"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="398dp" />
 
     <Button
         android:id="@+id/aboutButton"
