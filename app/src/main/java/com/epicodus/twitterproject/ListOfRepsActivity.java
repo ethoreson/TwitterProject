@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 import butterknife.Bind;
@@ -28,6 +29,8 @@ public class ListOfRepsActivity extends AppCompatActivity {
 
     @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
     @Bind(R.id.listView) ListView mListView;
+
+    public ArrayList<Representative> mRepresentatives = new ArrayList<>();
 
     private String[] representatives = new String[] {"Jim Ferrell", "Cyrus Habib", "Jay Inslee", "Dave Reichert", "Patty Murray", "Maria Cantwell", "Mike Pence", "Donald Trump"};
     private String[] details = new String[] {"Mayor - D - @WAFederalWay", "Lieutenant Governor - D - @cyrushabib", "Governor - D - @GovInslee", "Congress Representative - R - @davereichert", "Senator - D - @PattyMurray", "Senator - D - @SenatorCantwell", "Vice President - R - @mike_pence", "President - R - @realDonaldTrump"};
@@ -52,7 +55,7 @@ public class ListOfRepsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String zipCode = intent.getStringExtra("zipCode");
 
-        mZipCodeTextView.setText("Your elected representatives, based on your zip code of " + zipCode + " are:");
+        mZipCodeTextView.setText("Your elected representatives, based on your address of " + zipCode + " are:");
 
         getRepresentatives(zipCode);
     }
@@ -70,7 +73,10 @@ public class ListOfRepsActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
+                    if (response.isSuccessful()) {
+                        Log.v(TAG, jsonData);
+                        mRepresentatives = googleService.processResults(response);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
