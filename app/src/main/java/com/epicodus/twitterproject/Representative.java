@@ -14,7 +14,7 @@ public class Representative {
     }
 
     public String getParty() {
-        return mName;
+        return mParty;
     }
 
 }

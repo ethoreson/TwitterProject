@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,10 +17,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-//import android.net.http.RequestQueue;
 
 public class ListOfRepsActivity extends AppCompatActivity {
-    private ListView lv;
     public static final String TAG = AboutActivity.class.getSimpleName();
 
     @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
@@ -31,24 +28,12 @@ public class ListOfRepsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_list_of_reps);
-        lv = (ListView) findViewById(R.id.listView);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_reps);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
         String zipCode = intent.getStringExtra("zipCode");
-
-        List<String> array_list = new ArrayList<String>();
-        //ListView listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                array_list );
-
-        lv.setAdapter(arrayAdapter);
 
         mZipCodeTextView.setText("Your elected representatives, based on your address of " + zipCode + " are:");
 
@@ -70,13 +55,17 @@ public class ListOfRepsActivity extends AppCompatActivity {
                 mRepresentatives = googleService.processResults(response);
 
                 ListOfRepsActivity.this.runOnUiThread(new Runnable() {
-
                     @Override
                     public void run() {
+
                         String[] representativeNames = new String[mRepresentatives.size()];
                         for (int i = 0; i < representativeNames.length; i++) {
                             representativeNames[i] = mRepresentatives.get(i).getName();
                         }
+
+                        ArrayAdapter adapter = new ArrayAdapter(ListOfRepsActivity.this,
+                                android.R.layout.simple_list_item_1, representativeNames);
+                        mListView.setAdapter(adapter);
 
                         for (Representative representative: mRepresentatives) {
                             Log.d(TAG, "Name: " + representative.getName());
