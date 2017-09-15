@@ -8,6 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.epicodus.twitterproject.models.Representative;
+import com.epicodus.twitterproject.services.GoogleService;
+import com.epicodus.twitterproject.ui.AboutActivity;
+
 import java.io.IOException;
 import java.util.ArrayList;
 

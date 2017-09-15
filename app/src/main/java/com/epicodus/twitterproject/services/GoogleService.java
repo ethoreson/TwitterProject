@@ -1,4 +1,7 @@
-package com.epicodus.twitterproject;
+package com.epicodus.twitterproject.services;
+
+import com.epicodus.twitterproject.Constants;
+import com.epicodus.twitterproject.models.Representative;
 
 import org.json.JSONArray;
 import org.json.JSONException;

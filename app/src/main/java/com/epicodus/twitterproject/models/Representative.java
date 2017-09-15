@@ -1,4 +1,4 @@
-package com.epicodus.twitterproject;
+package com.epicodus.twitterproject.models;
 
 public class Representative {
     private String mName;
