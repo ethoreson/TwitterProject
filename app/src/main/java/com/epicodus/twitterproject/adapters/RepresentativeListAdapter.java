@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public abstract class RepresentativeListAdapter extends RecyclerView.Adapter<RepresentativeListAdapter.RepresentativeViewHolder> {
+public class RepresentativeListAdapter extends RecyclerView.Adapter<RepresentativeListAdapter.RepresentativeViewHolder> {
     private ArrayList<Representative> mRepresentatives = new ArrayList<>();
     private Context mContext;
 
@@ -29,6 +29,11 @@ public abstract class RepresentativeListAdapter extends RecyclerView.Adapter<Rep
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.representative_list_item, parent, false);
         RepresentativeViewHolder viewHolder = new RepresentativeViewHolder(view);
         return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(RepresentativeListAdapter.RepresentativeViewHolder holder, int position) {
+        holder.bindRepresentative(mRepresentatives.get(position));
     }
 
     @Override

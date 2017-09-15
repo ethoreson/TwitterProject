@@ -3,11 +3,10 @@ package com.epicodus.twitterproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import com.epicodus.twitterproject.adapters.RepresentativeListAdapter;
 import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.services.GoogleService;
 import com.epicodus.twitterproject.ui.AboutActivity;
@@ -25,8 +24,9 @@ import okhttp3.Response;
 public class ListOfRepsActivity extends AppCompatActivity {
     public static final String TAG = AboutActivity.class.getSimpleName();
 
-    @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
-    @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    private RepresentativeListAdapter mAdapter;
 
     public ArrayList<Representative> mRepresentatives = new ArrayList<>();
 
@@ -38,8 +38,6 @@ public class ListOfRepsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String zipCode = intent.getStringExtra("zipCode");
-
-        mZipCodeTextView.setText("Your elected representatives, based on your address of " + zipCode + " are:");
 
         getRepresentatives(zipCode);
     }
@@ -61,19 +59,15 @@ public class ListOfRepsActivity extends AppCompatActivity {
                 ListOfRepsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        mAdapter = new RepresentativeListAdapter(getApplicationContext(), mRepresentatives);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(ListOfRepsActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                         String[] representativeNames = new String[mRepresentatives.size()];
                         for (int i = 0; i < representativeNames.length; i++) {
                             representativeNames[i] = mRepresentatives.get(i).getName();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(ListOfRepsActivity.this,
-                                android.R.layout.simple_list_item_1, representativeNames);
-                        mListView.setAdapter(adapter);
-
-                        for (Representative representative: mRepresentatives) {
-                            Log.d(TAG, "Name: " + representative.getName());
-                            Log.d(TAG, "Party: " + representative.getParty());
                         }
                     }
                 });
