@@ -1,17 +1,12 @@
 package com.epicodus.twitterproject;
 
-import java.util.ArrayList;
-
 public class Representative {
     private String mName;
     private String mParty;
-    private String mTwitter;
-    private ArrayList<String> mChannels = new ArrayList<>();
 
-    public Representative(String name, String party, ArrayList<String> channels) {
+    public Representative(String name, String party) {
         this.mName = name;
         this.mParty = party;
-        this.mChannels = channels;
     }
 
     public String getName() {
@@ -22,7 +17,4 @@ public class Representative {
         return mName;
     }
 
-    public ArrayList<String> getChannels() {
-        return mChannels;
-    }
 }

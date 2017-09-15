@@ -81,7 +81,6 @@ public class ListOfRepsActivity extends AppCompatActivity {
                         for (Representative representative: mRepresentatives) {
                             Log.d(TAG, "Name: " + representative.getName());
                             Log.d(TAG, "Party: " + representative.getParty());
-                            Log.d(TAG, "Channels: " + representative.getChannels().toString());
                         }
                     }
                 });

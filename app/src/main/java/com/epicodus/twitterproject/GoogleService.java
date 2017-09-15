@@ -49,13 +49,8 @@ public class GoogleService {
                     JSONObject representativeJSON = officialsJSON.getJSONObject(i);
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
-                    ArrayList<String> channels = new ArrayList<>();
-                    JSONArray channelsJSON = representativeJSON.getJSONObject("channels")
-                            .getJSONArray("channels");
-                    for (int y = 0; y < channelsJSON.length(); y++) {
-                        channels.add(channelsJSON.get(y).toString());
-                    }
-                    Representative representative = new Representative(name, party, channels);
+
+                    Representative representative = new Representative(name, party);
                     representatives.add(representative);
                 }
             }
