@@ -13,8 +13,6 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
-import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 //
 public class GoogleService {
 
@@ -23,14 +21,13 @@ public class GoogleService {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOOGLE_BASE_URL).newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOOGLE_BASE_URL + "address=" + zipCode + "&includeOffices=true&key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0").newBuilder();
         urlBuilder.addQueryParameter(Constants.GOOGLE_ZIPCODE_QUERY_PARAMETER, zipCode);
         String url = urlBuilder.build().toString();
 
- //      String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
-                .url("https://www.googleapis.com/civicinfo/v2/representatives?address=" + zipCode + "&includeOffices=true&key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0")
+                .url(url)
                 .build();
 
         Call call = client.newCall(request);
@@ -44,7 +41,7 @@ public class GoogleService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
 
-                JSONObject googleJSON = new JSONObject(jsonData.toString());
+                JSONObject googleJSON = new JSONObject(jsonData);
                 //JSONArray googleJSON = new JSONArray (jsonData);
                 JSONArray officialsJSON = googleJSON.getJSONArray("officials");
 
