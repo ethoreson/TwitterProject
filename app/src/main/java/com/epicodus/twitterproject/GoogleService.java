@@ -43,7 +43,9 @@ public class GoogleService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                JSONObject googleJSON = new JSONObject(jsonData);
+
+                JSONObject googleJSON = new JSONObject(jsonData.toString());
+                //JSONArray googleJSON = new JSONArray (jsonData);
                 JSONArray officialsJSON = googleJSON.getJSONArray("officials");
 
                 for (int i= 0; i < officialsJSON.length(); i++) {
@@ -52,7 +54,7 @@ public class GoogleService {
                     String party = representativeJSON.getString("party");
                     ArrayList<String> channels = new ArrayList<>();
                     JSONArray channelsJSON = representativeJSON.getJSONObject("channels")
-                            .getJSONArray("display_channels");
+                            .getJSONArray("channels");
                     for (int y = 0; y < channelsJSON.length(); y++) {
                         channels.add(channelsJSON.get(y).toString());
                     }
