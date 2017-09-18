@@ -1,8 +1,13 @@
 package com.epicodus.twitterproject.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Representative {
-    private String mName;
-    private String mParty;
+    String mName;
+    String mParty;
+
+    public Representative() {}
 
     public Representative(String name, String party) {
         this.mName = name;
