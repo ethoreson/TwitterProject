@@ -9,7 +9,6 @@ import com.epicodus.twitterproject.adapters.RepresentativePagerAdapter;
 import com.epicodus.twitterproject.models.Representative;
 
 import org.parceler.Parcels;
-
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -29,7 +28,7 @@ public class RepresentativeDetailActivity extends AppCompatActivity {
 
         mRepresentatives = Parcels.unwrap(getIntent().getParcelableExtra("representatives"));
 
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
         adapterViewPager = new RepresentativePagerAdapter(getSupportFragmentManager(), mRepresentatives);
         mViewPager.setAdapter(adapterViewPager);

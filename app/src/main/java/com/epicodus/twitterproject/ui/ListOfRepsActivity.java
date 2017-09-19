@@ -1,4 +1,4 @@
-package com.epicodus.twitterproject;
+package com.epicodus.twitterproject.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,10 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.epicodus.twitterproject.Constants;
+import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.adapters.RepresentativeListAdapter;
 import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.services.GoogleService;
-import com.epicodus.twitterproject.ui.AboutActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;

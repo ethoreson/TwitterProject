@@ -2,6 +2,8 @@ package com.epicodus.twitterproject;
 
 import android.support.test.rule.ActivityTestRule;
 
+import com.epicodus.twitterproject.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

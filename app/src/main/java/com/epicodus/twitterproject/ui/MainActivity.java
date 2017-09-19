@@ -1,4 +1,4 @@
-package com.epicodus.twitterproject;
+package com.epicodus.twitterproject.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.epicodus.twitterproject.ui.AboutActivity;
+import com.epicodus.twitterproject.Constants;
+import com.epicodus.twitterproject.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

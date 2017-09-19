@@ -3,6 +3,8 @@ package com.epicodus.twitterproject;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
+import com.epicodus.twitterproject.ui.ListOfRepsActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 
