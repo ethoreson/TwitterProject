@@ -1,6 +1,7 @@
 package com.epicodus.twitterproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.models.Representative;
+import com.epicodus.twitterproject.ui.RepresentativeDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -41,7 +45,7 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
         return mRepresentatives.size();
     }
 
-    public class RepresentativeViewHolder extends RecyclerView.ViewHolder {
+    public class RepresentativeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.representativeNameTextView) TextView mNameTextView;
         @Bind(R.id.partyTextView) TextView mPartyTextView;
         private Context mContext;
@@ -50,6 +54,16 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, RepresentativeDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("representatives", Parcels.wrap(mRepresentatives));
+            mContext.startActivity(intent);
         }
 
         public void bindRepresentative(Representative representative) {
