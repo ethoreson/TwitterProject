@@ -1,7 +1,9 @@
 package com.epicodus.twitterproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +24,8 @@ import okhttp3.Response;
 
 
 public class ListOfRepsActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentZipCode;
     public static final String TAG = AboutActivity.class.getSimpleName();
 
     @Bind(R.id.recyclerView)
@@ -39,7 +43,13 @@ public class ListOfRepsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String zipCode = intent.getStringExtra("zipCode");
 
-        getRepresentatives(zipCode);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentZipCode = mSharedPreferences.getString(Constants.PREFERENCES_ZIPCODE_KEY, null);
+
+        if (mRecentZipCode != null) {
+            getRepresentatives(mRecentZipCode);
+        }
+        //getRepresentatives(zipCode);
     }
 
     private void getRepresentatives(String zipCode) {
@@ -49,7 +59,7 @@ public class ListOfRepsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
+                    e.printStackTrace();
             }
 
             @Override
@@ -66,9 +76,9 @@ public class ListOfRepsActivity extends AppCompatActivity {
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                         String[] representativeNames = new String[mRepresentatives.size()];
-                        for (int i = 0; i < representativeNames.length; i++) {
-                            representativeNames[i] = mRepresentatives.get(i).getName();
-                        }
+//                        for (int i = 0; i < representativeNames.length; i++) {
+//                            representativeNames[i] = mRepresentatives.get(i).getName();
+//                        }
                     }
                 });
             }

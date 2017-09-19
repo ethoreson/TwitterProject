@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1047094512192",
+    "firebase_url": "https://twitterproject-ceaff.firebaseio.com",
+    "project_id": "twitterproject-ceaff",
+    "storage_bucket": "twitterproject-ceaff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047094512192:android:9f489acfbcb1f722",
+        "android_client_info": {
+          "package_name": "com.epicodus.twitterproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047094512192-c91rl5cb2rh6074obaev3lufu74n38ng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.twitterproject",
+            "certificate_hash": "607b4424ca7796e9ed67f562831a426492bb92c2"
+          }
+        },
+        {
+          "client_id": "1047094512192-l02psesuhjn94j7kslscmpkfs6kgon3n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbQa_KxSaAGjIQPlJXpW8x8eSJG6T7jTk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047094512192-l02psesuhjn94j7kslscmpkfs6kgon3n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

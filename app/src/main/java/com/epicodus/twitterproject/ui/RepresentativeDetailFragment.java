@@ -1,6 +1,8 @@
 package com.epicodus.twitterproject.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,12 +18,12 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class RepresentativeDetailFragment extends Fragment {
-        @Bind(R.id.representativeNameTextView) TextView mName;
-        @Bind(R.id.partyTextView) TextView mParty;
+public class RepresentativeDetailFragment extends Fragment implements View.OnClickListener {
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
+
+    @Bind(R.id.representativeNameTextView) TextView mNameLabel;
+    @Bind(R.id.partyTextView) TextView mPartyLabel;
 
         private Representative mRepresentative;
 
@@ -40,13 +42,25 @@ public class RepresentativeDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater infalter, ViewGroup container, Bundle savedInstanceState) {
-        View view = infalter.inflate(R.layout.fragment_representative_detail, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_representative_detail, container, false);
         ButterKnife.bind(this, view);
 
-        mName.setText(mRepresentative.getName());
-        mParty.setText(mRepresentative.getParty());
+        mNameLabel.setText(mRepresentative.getName());
+        mPartyLabel.setText(mRepresentative.getParty());
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mNameLabel) {
+            Intent nameIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mRepresentative.getName()));
+            startActivity(nameIntent);
+        }
+        if (v == mPartyLabel) {
+            Intent partyIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mRepresentative.getParty()));
+            startActivity(partyIntent);
+        }
     }
 };
