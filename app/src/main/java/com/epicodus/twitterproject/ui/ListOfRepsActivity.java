@@ -1,14 +1,11 @@
 package com.epicodus.twitterproject.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.epicodus.twitterproject.Constants;
 import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.adapters.RepresentativeListAdapter;
 import com.epicodus.twitterproject.models.Representative;
@@ -25,12 +22,11 @@ import okhttp3.Response;
 
 
 public class ListOfRepsActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentZipCode;
-    public static final String TAG = AboutActivity.class.getSimpleName();
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentZipCode;
+//    public static final String TAG = AboutActivity.class.getSimpleName();
 
-    @Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RepresentativeListAdapter mAdapter;
 
     public ArrayList<Representative> mRepresentatives = new ArrayList<>();
@@ -44,12 +40,14 @@ public class ListOfRepsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String zipCode = intent.getStringExtra("zipCode");
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentZipCode = mSharedPreferences.getString(Constants.PREFERENCES_ZIPCODE_KEY, null);
+        getRepresentatives(zipCode);
 
-        if (mRecentZipCode != null) {
-            getRepresentatives(mRecentZipCode);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentZipCode = mSharedPreferences.getString(Constants.PREFERENCES_ZIPCODE_KEY, null);
+//
+//        if (mRecentZipCode != null) {
+//            getRepresentatives(mRecentZipCode);
+//        }
         //getRepresentatives(zipCode);
     }
 
