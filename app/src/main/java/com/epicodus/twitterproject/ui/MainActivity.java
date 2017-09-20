@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_ZIPCODE);
 
-        mSearchedZipCodeReference = mSearchedZipCodeReference.addValueEventListener(new ValueEventListener() {
+        mSearchedZipCodeReferenceListener = mSearchedZipCodeReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
