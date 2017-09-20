@@ -53,7 +53,24 @@ public class GoogleService {
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
 
-                    Representative representative = new Representative(name, party);
+                    //String phone = representativeJSON.getString("phones");
+                    //String channels = representativeJSON.getString("channels");
+                    ArrayList<String> phones = new ArrayList<>();
+                    JSONArray phonesJSON = representativeJSON.getJSONObject("phones")
+                            .getJSONArray("phones");
+                    for (int y = 0; y < phonesJSON.length(); y++) {
+                        phones.add(phonesJSON.get(y).toString());
+                    }
+
+                    ArrayList<String> channels = new ArrayList<>();
+                    JSONArray channelsJSON = representativeJSON.getJSONObject("channels")
+                            .getJSONArray("id");
+                    for (int y = 0; y < channelsJSON.length(); y++) {
+                        phones.add(channelsJSON.get(y).toString());
+                    }
+                    String photoUrl = representativeJSON.getString("photoUrl");
+
+                    Representative representative = new Representative(name, party, phones, channels, photoUrl);
                     representatives.add(representative);
                 }
             }

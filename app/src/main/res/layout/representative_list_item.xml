@@ -30,6 +30,36 @@
             android:layout_alignParentStart="true"
             android:textStyle="italic"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:id="@+id/phoneTextView"/>
+        android:layout_below="@+id/partyTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Channel"
+            android:id="@+id/channelTextView" />
+        android:layout_below="@+id/phoneTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo"
+            android:id="@+id/photoTextView" />
+        android:layout_below="@+id/channelTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="italic"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
