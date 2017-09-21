@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.epicodus.twitterproject.Constants;
 
+import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.models.Representative;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;

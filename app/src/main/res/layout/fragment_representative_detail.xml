@@ -1,8 +1,11 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.twitterproject.ui.RepresentativeDetailFragment">
+    android:background="@color/colorDivider"
+    tools:context="com.epicodus.twitterproject.ui.RepresentativeDetailActivity">
 
 
     <LinearLayout
@@ -45,17 +48,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="28dp" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/ratingTextView"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_alignTop="@+id/restaurantNameTextView"-->
-            <!--android:text="4.5/5"-->
-            <!--android:textColor="@color/colorAccent"-->
-            <!--android:textStyle="bold" />-->
-
             <TextView
                 android:id="@+id/channelTextView"
                 android:layout_width="wrap_content"
@@ -68,27 +60,17 @@
                 android:layout_marginBottom="88dp" />
 
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/representativeImageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/channelTextView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:paddingTop="20dp">
+                android:layout_height="180dp"
+                android:scaleType="centerCrop" />
 
-            </LinearLayout>
+
         </RelativeLayout>
+    </LinearLayout>
 
-        <ImageView
-            android:id="@+id/representativeImageView"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="" />
+
 
         <Button
             android:id="@+id/saveRepresentativeButton"
@@ -104,9 +86,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
         </RelativeLayout>
-    </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>
