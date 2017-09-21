@@ -1,5 +1,7 @@
 package com.epicodus.twitterproject.services;
 
+import android.util.Log;
+
 import com.epicodus.twitterproject.Constants;
 import com.epicodus.twitterproject.models.Representative;
 
@@ -53,21 +55,34 @@ public class GoogleService {
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
 
-                    ArrayList<String> phone = new ArrayList<>();
-                    JSONArray phoneJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("phones");
-                    for (int j = 0; j < phoneJSON.length(); j++) {
-                        phone.add(phoneJSON.getJSONObject(j).getString("phones").toString());
-                    }
-
                     ArrayList<String> channels = new ArrayList<>();
-                    JSONArray channelsJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("channels");
-                    for (int k = 0; k < channelsJSON.length(); k++) {
-                        channels.add(channelsJSON.getJSONObject(k).getString("channels").toString());
-                    }
+                    JSONArray typesJSON = representativeJSON.getJSONArray("channels");
+
+                    ArrayList<String> phone = new ArrayList<>();
+                    JSONArray phoneJSON = representativeJSON.getJSONArray("phones");
 
                     Representative representative = new Representative(name, party, phone, channels);
                     representatives.add(representative);
+                    Log.d("string", "processResults: " + representative);
                 }
+//                    JSONArray phonesJSON = representativeJSON.getArray("phones");
+//                    JSONObject phoneOneJSON = phonesJSON.getJSONObject(0);
+//                    String phone = phoneOneJSON.;
+//                    ArrayList<String> phone = new ArrayList<>();
+//                    JSONArray phoneJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("phones");
+//                    for (int j = 0; j < phoneJSON.length(); j++) {
+//                        phone.add(phoneJSON.getJSONObject(j).getString("phones").toString());
+//                    }
+
+        //            JSONArray channelsJSON = representativeJSON.getJSONArray("channels");
+     //               JSONObject channelOneJSON = channelsJSON.getJSONObject(0);
+                    //JSONArray channelsJSON = representativeJSON.getJSONArray("channels").getJSONObject(0).getJSONArray("channels");
+//                    for (int k = 0; k < channelsJSON.length(); k++) {
+//                        channels.add(channelsJSON.getJSONObject(k).getString("channels").toString());
+//                        Log.d("string", "processResults: " + channels);
+//                    }
+
+
             }
         } catch (IOException e) {
             e.printStackTrace();

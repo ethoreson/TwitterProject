@@ -72,8 +72,8 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
         public void bindRepresentative(Representative representative) {
             mNameTextView.setText(representative.getName());
             mPartyTextView.setText(representative.getParty());
-            mPhoneTextView.setText(Arrays.toString(representative.getPhone());
-            mChannelsTextView.setText(representative.getChannels());
+            mPhoneTextView.setText(String.valueOf(representative.getPhone()));
+            mChannelsTextView.setText(String.valueOf(representative.getChannels()));
         }
     }
 }

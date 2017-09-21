@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.zipCodeText) EditText mZipCodeText;
     @Bind(R.id.appIntroTextView) TextView mAppIntroTextView;
+    @Bind(R.id.savedRepsButton) Button mSavedRepsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_ZIPCODE);
+
 
         mSearchedZipCodeReferenceListener = mSearchedZipCodeReference.addValueEventListener(new ValueEventListener() {
 
@@ -63,12 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface droidFont = Typeface.createFromAsset(getAssets(), "fonts/DroidSerifRegular.ttf");
         mAppIntroTextView.setTypeface(droidFont);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
 
         mFindRepsButton.setOnClickListener(this);
-        //mAboutButton.setOnClickListener(this);
-
+        mAboutButton.setOnClickListener(this);
+        mSavedRepsButton.setOnClickListener(this);
 
     }
 
@@ -76,17 +76,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             if (v == mFindRepsButton) {
                 String zipCode = mZipCodeText.getText().toString();
-
                 saveZipCodeToFirebase(zipCode);
-//                if(!(zipCode).equals("")) {
-//                    addToSharedPreferences(zipCode);
-//                }
                 Intent intent = new Intent(MainActivity.this, ListOfRepsActivity.class);
                 intent.putExtra("zipCode", zipCode);
                 startActivity(intent);
-            } else if (v == mAboutButton) {
+            }
+            if (v == mAboutButton) {
                 Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(aboutIntent);
+            }
+            if (v == mSavedRepsButton) {
+                Intent intent = new Intent(MainActivity.this, SavedRepresentativeListActivity.class);
+                startActivity(intent);
             }
         }
 
@@ -99,7 +100,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         mSearchedZipCodeReference.removeEventListener(mSearchedZipCodeReferenceListener);
     }
-//        private void addToSharedPreferences(String zipCode) {
-//            mEditor.putString(Constants.PREFERENCES_ZIPCODE_KEY, zipCode).apply();
-//        }
-    }
+}

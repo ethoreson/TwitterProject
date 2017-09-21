@@ -60,14 +60,13 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         mPartyLabel.setText(mRepresentative.getParty());
         mPhoneLabel.setText(android.text.TextUtils.join("Phone number: ", mRepresentative.getPhone()));
         mChannelsLabel.setText(android.text.TextUtils.join("Contact: ", mRepresentative.getChannels()));
-        //mPhotolabel.setText(mRepresentative.getPhotoUrl());
 
         mNameLabel.setOnClickListener(this);
         mPartyLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mChannelsLabel.setOnClickListener(this);
 
-        mSaveRepresentativeButton.setOnClickListener(this);
+        //mSaveRepresentativeButton.setOnClickListener(this);
         return view;
     }
 
@@ -77,20 +76,10 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
             Intent nameIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mRepresentative.getName()));
             startActivity(nameIntent);
         }
-        if (v == mPartyLabel) {
-            Intent phoneIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("party:" + mRepresentative.getParty()));
-            startActivity(phoneIntent);
-        }
         if (v == mPhoneLabel) {
             Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
                     Uri.parse("tel:" + mRepresentative.getPhone()));
             startActivity(phoneIntent);
-        }
-        if (v == mChannelsLabel) {
-            Intent channelIntent = new Intent(Intent.ACTION_DIAL,
-                    Uri.parse("contact:" + mRepresentative.getChannels()));
-            startActivity(channelIntent);
         }
         if (v == mSaveRepresentativeButton) {
             DatabaseReference representativeRef = FirebaseDatabase
