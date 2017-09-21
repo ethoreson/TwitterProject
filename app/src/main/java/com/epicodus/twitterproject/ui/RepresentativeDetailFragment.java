@@ -34,9 +34,7 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
     @Bind(R.id.partyTextView) TextView mPartyLabel;
     @Bind(R.id.phoneTextView) TextView mPhoneLabel;
     @Bind(R.id.channelTextView) TextView mChannelsLabel;
-    @Bind(R.id.photoTextView) ImageView mPhotoLabel;
     @Bind(R.id.saveRepresentativeButton) TextView mSaveRepresentativeButton;
-
         private Representative mRepresentative;
 
         public static RepresentativeDetailFragment newInstance(Representative representative) {
@@ -58,15 +56,9 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         View view = inflater.inflate(R.layout.fragment_representative_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext())
-                .load(mRepresentative.getPhotoUrl())
-                .resize(MAX_WIDTH, MAX_HEIGHT)
-                .centerCrop()
-                .into(mPhotoLabel);
-
         mNameLabel.setText(mRepresentative.getName());
         mPartyLabel.setText(mRepresentative.getParty());
-        mPhoneLabel.setText(android.text.TextUtils.join("Phone number: ", mRepresentative.getPhones()));
+        mPhoneLabel.setText(android.text.TextUtils.join("Phone number: ", mRepresentative.getPhone()));
         mChannelsLabel.setText(android.text.TextUtils.join("Contact: ", mRepresentative.getChannels()));
         //mPhotolabel.setText(mRepresentative.getPhotoUrl());
 
@@ -74,7 +66,6 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         mPartyLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mChannelsLabel.setOnClickListener(this);
-        //mPhotoLLabel.setOnClickListener(this);
 
         mSaveRepresentativeButton.setOnClickListener(this);
         return view;
@@ -93,8 +84,13 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         }
         if (v == mPhoneLabel) {
             Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
-                    Uri.parse("tel:" + mRepresentative.getPhones()));
+                    Uri.parse("tel:" + mRepresentative.getPhone()));
             startActivity(phoneIntent);
+        }
+        if (v == mChannelsLabel) {
+            Intent channelIntent = new Intent(Intent.ACTION_DIAL,
+                    Uri.parse("contact:" + mRepresentative.getChannels()));
+            startActivity(channelIntent);
         }
         if (v == mSaveRepresentativeButton) {
             DatabaseReference representativeRef = FirebaseDatabase

@@ -9,17 +9,15 @@ import java.util.List;
 public class Representative {
     String name;
     String party;
-    List<String> phones = new ArrayList<>();
+    List<String> phone = new ArrayList<>();
     List<String> channels = new ArrayList<>();
-    String photoUrl;
 
     public Representative() {}
 
-    public Representative(String name, String party, ArrayList<String> phones, ArrayList<String> channels, String photoUrl) {
+    public Representative(String name, String party, ArrayList<String> phone, ArrayList<String> channels) {
         this.name = name;
         this.party = party;
-        this.photoUrl = getLargePhotoUrl(photoUrl);
-        this.phones = phones;
+        this.phone = phone;
         this.channels = channels;
     }
 
@@ -31,23 +29,17 @@ public class Representative {
         return party;
     }
 
-    public List<String> getPhones() {
-        return phones;
+    public List<String> getPhone() {
+        return phone;
     }
 
     public List<String> getChannels() {
         return channels;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
 
-    public String getLargePhotoUrl(String photoUrl) {
-        String largePhotoUrl = photoUrl.substring(0, photoUrl.length() - 6).concat("o.jpg");
-        return largePhotoUrl;
-    }
 
 
 
 }
+

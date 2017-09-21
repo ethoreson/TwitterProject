@@ -24,7 +24,7 @@ public class GoogleService {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOOGLE_BASE_URL + "address=" + zipCode + "&includeOffices=true&key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0").newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOOGLE_BASE_URL + "address=" + zipCode + "&includeOffices=true&fields=divisions%2Ckind%2Coffices(name%2Croles%2Csources)%2Cofficials(channels%2Cname%2Cparty%2Cphones%2CphotoUrl)&key=AIzaSyALQDoCiusD0Poqe2mDgGo78zoQy31U2N0").newBuilder();
         urlBuilder.addQueryParameter(Constants.GOOGLE_ZIPCODE_QUERY_PARAMETER, zipCode);
         String url = urlBuilder.build().toString();
 
@@ -53,24 +53,19 @@ public class GoogleService {
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
 
-                    //String phone = representativeJSON.getString("phones");
-                    //String channels = representativeJSON.getString("channels");
-                    ArrayList<String> phones = new ArrayList<>();
-                    JSONArray phonesJSON = representativeJSON.getJSONObject("phones")
-                            .getJSONArray("phones");
-                    for (int y = 0; y < phonesJSON.length(); y++) {
-                        phones.add(phonesJSON.get(y).toString());
+                    ArrayList<String> phone = new ArrayList<>();
+                    JSONArray phoneJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("phones");
+                    for (int j = 0; j < phoneJSON.length(); j++) {
+                        phone.add(phoneJSON.getJSONObject(j).getString("phones").toString());
                     }
 
                     ArrayList<String> channels = new ArrayList<>();
-                    JSONArray channelsJSON = representativeJSON.getJSONObject("channels")
-                            .getJSONArray("id");
-                    for (int y = 0; y < channelsJSON.length(); y++) {
-                        phones.add(channelsJSON.get(y).toString());
+                    JSONArray channelsJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("channels");
+                    for (int k = 0; k < channelsJSON.length(); k++) {
+                        channels.add(channelsJSON.getJSONObject(k).getString("channels").toString());
                     }
-                    String photoUrl = representativeJSON.getString("photoUrl");
 
-                    Representative representative = new Representative(name, party, phones, channels, photoUrl);
+                    Representative representative = new Representative(name, party, phone, channels);
                     representatives.add(representative);
                 }
             }
