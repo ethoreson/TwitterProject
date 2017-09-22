@@ -9,12 +9,12 @@ import java.util.List;
 public class Representative {
     String name;
     String party;
-    List<String> phone = new ArrayList<>();
-    List<String> channels = new ArrayList<>();
+    String phone;
+    String channels;
 
     public Representative() {}
 
-    public Representative(String name, String party, ArrayList<String> phone, ArrayList<String> channels) {
+    public Representative(String name, String party, String phone, String channels) {
         this.name = name;
         this.party = party;
         this.phone = phone;
@@ -29,17 +29,13 @@ public class Representative {
         return party;
     }
 
-    public List<String> getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public List<String> getChannels() {
+    public String getChannels() {
         return channels;
     }
-
-
-
-
 
 }
 

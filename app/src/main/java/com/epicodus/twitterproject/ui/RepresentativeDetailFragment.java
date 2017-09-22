@@ -58,8 +58,8 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
 
         mNameLabel.setText(mRepresentative.getName());
         mPartyLabel.setText(mRepresentative.getParty());
-        mPhoneLabel.setText(android.text.TextUtils.join("Phone number: ", mRepresentative.getPhone()));
-        mChannelsLabel.setText(android.text.TextUtils.join("Contact: ", mRepresentative.getChannels()));
+        mPhoneLabel.setText(mRepresentative.getPhone());
+        mChannelsLabel.setText(mRepresentative.getChannels());
 
         mNameLabel.setOnClickListener(this);
         mPartyLabel.setOnClickListener(this);
