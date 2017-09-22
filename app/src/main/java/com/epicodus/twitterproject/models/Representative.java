@@ -10,15 +10,13 @@ public class Representative {
     String name;
     String party;
     List<String> phone = new ArrayList<>();
-    List<String> channels = new ArrayList<>();
 
     public Representative() {}
 
-    public Representative(String name, String party, ArrayList<String> phone, ArrayList<String> channels) {
+    public Representative(String name, String party, ArrayList<String> phone) {
         this.name = name;
         this.party = party;
         this.phone = phone;
-        this.channels = channels;
     }
 
     public String getName() {
@@ -32,13 +30,6 @@ public class Representative {
     public List<String> getPhone() {
         return phone;
     }
-
-    public List<String> getChannels() {
-        return channels;
-    }
-
-
-
 
 
 }

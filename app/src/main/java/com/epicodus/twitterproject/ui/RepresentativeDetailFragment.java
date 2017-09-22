@@ -8,18 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.twitterproject.Constants;
-
 import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.models.Representative;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -33,7 +29,7 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
     @Bind(R.id.representativeNameTextView) TextView mNameLabel;
     @Bind(R.id.partyTextView) TextView mPartyLabel;
     @Bind(R.id.phoneTextView) TextView mPhoneLabel;
-    @Bind(R.id.channelTextView) TextView mChannelsLabel;
+    //@Bind(R.id.channelTextView) TextView mChannelsLabel;
     @Bind(R.id.saveRepresentativeButton) TextView mSaveRepresentativeButton;
         private Representative mRepresentative;
 
@@ -56,15 +52,18 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         View view = inflater.inflate(R.layout.fragment_representative_detail, container, false);
         ButterKnife.bind(this, view);
 
+        String phone = mRepresentative.getPhone().toString();
+        //String channels = mRepresentative.getChannels().toString();
+
         mNameLabel.setText(mRepresentative.getName());
         mPartyLabel.setText(mRepresentative.getParty());
-        mPhoneLabel.setText(android.text.TextUtils.join("Phone number: ", mRepresentative.getPhone()));
-        mChannelsLabel.setText(android.text.TextUtils.join("Contact: ", mRepresentative.getChannels()));
+        mPhoneLabel.setText(phone);
+        //mChannelsLabel.setText(channels);
 
         mNameLabel.setOnClickListener(this);
         mPartyLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
-        mChannelsLabel.setOnClickListener(this);
+       // mChannelsLabel.setOnClickListener(this);
 
         //mSaveRepresentativeButton.setOnClickListener(this);
         return view;
@@ -77,9 +76,9 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
             startActivity(nameIntent);
         }
         if (v == mPhoneLabel) {
-            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
-                    Uri.parse("tel:" + mRepresentative.getPhone()));
-            startActivity(phoneIntent);
+            String phoneString = mRepresentative.getPhone().toString();
+            Uri number = Uri.parse(phoneString);
+            Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
         }
         if (v == mSaveRepresentativeButton) {
             DatabaseReference representativeRef = FirebaseDatabase

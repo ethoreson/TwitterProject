@@ -15,7 +15,6 @@ import com.epicodus.twitterproject.ui.RepresentativeDetailActivity;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -73,7 +72,7 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             mNameTextView.setText(representative.getName());
             mPartyTextView.setText(representative.getParty());
             mPhoneTextView.setText(String.valueOf(representative.getPhone()));
-            mChannelsTextView.setText(String.valueOf(representative.getChannels()));
+           // mChannelsTextView.setText(String.valueOf(representative.getChannels()));
         }
     }
 }

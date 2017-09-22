@@ -14,4 +14,13 @@
         android:text="Tweet Your Rep is a 4-day project developed by Emilie Thoreson for her Android track at Epicodus."
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="116dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="126dp"
+        android:text="Contact Emilie" />
 </RelativeLayout>

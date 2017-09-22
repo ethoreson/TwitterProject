@@ -49,30 +49,64 @@ public class GoogleService {
                 JSONObject googleJSON = new JSONObject(jsonData);
                 //JSONArray googleJSON = new JSONArray (jsonData);
                 JSONArray officialsJSON = googleJSON.getJSONArray("officials");
-
                 for (int i= 0; i < officialsJSON.length(); i++) {
                     JSONObject representativeJSON = officialsJSON.getJSONObject(i);
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
 
-                    ArrayList<String> channels = new ArrayList<>();
-                    JSONArray typesJSON = representativeJSON.getJSONArray("channels");
+                    //JSONObject telephoneJSON = phoneJSON.getJSONObject(0);
+                    //JSONArray phonesJSON = googleJSON.getJSONArray("phones");
+                    ArrayList<String> phoneArray = new ArrayList<>();
+                    for (int j=0; j < officialsJSON.length(); j++) {
+                        JSONObject telephoneJSON = officialsJSON.getJSONObject(j);
+                        String phone = telephoneJSON.getString("phones");
+                        phoneArray.add(phone);
+                    }
+                    String phone = representativeJSON.getString("phones");
 
-                    ArrayList<String> phone = new ArrayList<>();
-                    JSONArray phoneJSON = representativeJSON.getJSONArray("phones");
+                    Log.d("string", "PHONE: " + phoneArray);
 
-                    Representative representative = new Representative(name, party, phone, channels);
-                    representatives.add(representative);
-                    Log.d("string", "processResults: " + representative);
-                }
-//                    JSONArray phonesJSON = representativeJSON.getArray("phones");
-//                    JSONObject phoneOneJSON = phonesJSON.getJSONObject(0);
-//                    String phone = phoneOneJSON.;
+//                    //JSONArray channelsJSON = googleJSON.getJSONArray("channels");
+//                    ArrayList<String> channelsArray = new ArrayList<>();
+//                    for (int k=0; k < officialsJSON.length(); k++) {
+//                        JSONObject socialMediaJSON = officialsJSON.getJSONObject(k);
+//                        String channels = socialMediaJSON.getString("channels");
+//                        for (int l=0; l < officialsJSON.length(); l++) {
+//                            JSONArray keysJSON = officialsJSON.getJSONArray(l);
+//                            String key = keysJSON.getString("type");
+//                            channelsArray.add(key);
+//                        }
+//                        for (int m=0; m < officialsJSON.length(); m++) {
+//                            JSONObject valuesJSON = officialsJSON.getJSONObject(m);
+//                            String value = valuesJSON.getString("id");
+//                            channelsArray.add(value);
+//                        }
+//                        //channelsArray.add(channels);
+//                    }
+//
+//                    Log.d("string", "CHANNELS: " + channelsArray);
+
+//                    JSONArray phoneJSON = representativeJSON.getArray("phone");
+//                    JSONObject phoneOneJSON = phoneJSON.getJSONObject(0);
+//                    String phone = representativeJSON.getJSONArray("phone");
 //                    ArrayList<String> phone = new ArrayList<>();
 //                    JSONArray phoneJSON = representativeJSON.getJSONArray("officials").getJSONObject(0).getJSONArray("phones");
 //                    for (int j = 0; j < phoneJSON.length(); j++) {
 //                        phone.add(phoneJSON.getJSONObject(j).getString("phones").toString());
 //                    }
+
+//                    ArrayList<String> channels = new ArrayList<>();
+//                    JSONArray channelsJSON = representativeJSON.getJSONArray("channels");
+//                    String channel = channelsJSON.toString();
+//                    ArrayList<String> phone = new ArrayList<>();
+//                    JSONArray phoneJSON = representativeJSON.getJSONArray("phones");
+//                    String phones = phoneJSON.toString();
+
+                    Representative representative = new Representative(name, party, phoneArray);
+                    representatives.add(representative);
+                    Log.d("string", "processResults: " + representative);
+                }
+
 
         //            JSONArray channelsJSON = representativeJSON.getJSONArray("channels");
      //               JSONObject channelOneJSON = channelsJSON.getJSONObject(0);

@@ -11,11 +11,9 @@
         android:id="@+id/appIntroTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
-        android:text="Welcome to 'Tweet Your Rep'! Enter your zip code, and we'll list the twitter feeds of your elected representatives. Make your voice heard!"
+        android:text="Enter your zip code, and we'll list the contact info for your elected representatives. Make your voice heard!"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,21 +21,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintVertical_bias="0.019"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/findRepsButton"
-        android:layout_width="368dp"
-        android:layout_height="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimaryLight"
         android:text="Find Reps"
         android:textColor="@color/colorPrimaryText"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        android:layout_marginTop="13dp"
         android:layout_above="@+id/savedRepsButton"
-        android:layout_below="@+id/zipCodeText"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/zipCodeText"
@@ -55,23 +53,33 @@
 
     <Button
         android:id="@+id/aboutButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About TYR"
-        android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorTextIcons"
+        android:text="About BYR" />
 
     <Button
         android:id="@+id/savedRepsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/aboutButton"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimaryDark"
         android:text="My Saved Reps"
-        android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:textSize="60sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Bug Your Rep"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import com.epicodus.twitterproject.Constants;
 import com.epicodus.twitterproject.R;
 import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.ui.RepresentativeDetailActivity;
-import com.epicodus.twitterproject.ui.RepresentativeDetailFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,12 +38,12 @@ public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder im
         TextView nameTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
         TextView phoneTextView = (TextView) mView.findViewById(R.id.phoneTextView);
-        TextView channelsTextView = (TextView) mView.findViewById(R.id.channelsTextView);
+        //TextView channelsTextView = (TextView) mView.findViewById(R.id.channelsTextView);
 
         nameTextView.setText(representative.getName());
         partyTextView.setText("Party: " + representative.getParty());
         phoneTextView.setText("Phone: " + representative.getPhone());
-        channelsTextView.setText("Social Media: " + representative.getChannels());
+        //channelsTextView.setText("Social Media: " + representative.getChannels());
     }
 
     @Override
