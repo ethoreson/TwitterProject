@@ -53,7 +53,8 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         ButterKnife.bind(this, view);
 
         String phone = mRepresentative.getPhone().toString();
-        //String channels = mRepresentative.getChannels().toString();
+        String name = mRepresentative.getName();
+        String party = mRepresentative.getParty();
 
         mNameLabel.setText(mRepresentative.getName());
         mPartyLabel.setText(mRepresentative.getParty());

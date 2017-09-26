@@ -29,7 +29,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class RepresentativeListActivity extends AppCompatActivity {
+public class ListOfRepsActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentZipCode;
@@ -108,14 +108,15 @@ public class RepresentativeListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mRepresentatives = googleService.processResults(response);
 
-                RepresentativeListActivity.this.runOnUiThread(new Runnable() {
+                ListOfRepsActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
+
                         mAdapter = new RepresentativeListAdapter(getApplicationContext(), mRepresentatives);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(RepresentativeListActivity.this);
+                                new LinearLayoutManager(ListOfRepsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
@@ -124,9 +125,8 @@ public class RepresentativeListActivity extends AppCompatActivity {
         });
     }
 
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_ZIPCODE_KEY, location).apply();
+    private void addToSharedPreferences(String zipCode) {
+        mEditor.putString(Constants.PREFERENCES_ZIPCODE_KEY, zipCode).apply();
     }
 
 }
-
