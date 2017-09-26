@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             if (v == mFindRepsButton) {
-                Intent intent = new Intent(MainActivity.this, RepresentativeListActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListOfRepsActivity.class);
                 startActivity(intent);
             }
             if (v == mAboutButton) {

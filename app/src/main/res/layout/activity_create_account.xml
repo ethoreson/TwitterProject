@@ -71,7 +71,6 @@
             android:textColorHint="@color/colorDivider"
             android:textSize="20sp" />
 
-
         <Button
             android:id="@+id/createUserButton"
             android:layout_width="match_parent"
