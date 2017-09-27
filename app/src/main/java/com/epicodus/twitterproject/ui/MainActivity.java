@@ -2,6 +2,7 @@ package com.epicodus.twitterproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +12,7 @@ import android.widget.Button;
 
 import com.epicodus.twitterproject.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.savedRepsButton) Button mSavedRepsButton;
     @Bind(R.id.aboutButton) Button mAboutButton;
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mFindRepsButton.setOnClickListener(this);
         mSavedRepsButton.setOnClickListener(this);
+        mAboutButton.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    getSupportActionBar().setTitle("Make your voice heard, " + user.getDisplayName() + "!");
+                } else {
+
+                }
+            }
+        };
     }
 
     @Override
@@ -64,8 +85,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
             if (v == mAboutButton) {
-                Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(aboutIntent);
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
             if (v == mSavedRepsButton) {
                 Intent intent = new Intent(MainActivity.this, SavedRepresentativeListActivity.class);
@@ -73,13 +94,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-//        public void saveZipCodeToFirebase(String zipCode) {
-//            mSearchedZipCodeReference.push().setValue(zipCode);
-//        }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSearchedZipCodeReference.removeEventListener(mSearchedZipCodeReferenceListener);
-//    }
+        @Override
+        public void onStart() {
+            super.onStart();
+            mAuth.addAuthStateListener(mAuthListener);
+        }
+
+        @Override
+        public void onStop() {
+            super.onStop();
+            if (mAuthListener != null) {
+                mAuth.removeAuthStateListener(mAuthListener);
+            }
+        }
 }

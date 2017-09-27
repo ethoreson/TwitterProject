@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
 
 import com.epicodus.twitterproject.Constants;
 import com.epicodus.twitterproject.R;
@@ -42,7 +42,7 @@ public class ListOfRepsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_representative_detail);
+        setContentView(R.layout.activity_list_of_reps);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();

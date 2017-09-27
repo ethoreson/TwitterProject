@@ -2,21 +2,20 @@ package com.epicodus.twitterproject.models;
 
 import org.parceler.Parcel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Parcel
 public class Representative {
     String name;
     String party;
-    List<String> phone = new ArrayList<>();
+    String phone;
+    String channels;
 
     public Representative() {}
 
-    public Representative(String name, String party, ArrayList<String> phone) {
+    public Representative(String name, String party, String phone, String channels) {
         this.name = name;
         this.party = party;
         this.phone = phone;
+        this.channels = channels;
     }
 
     public String getName() {
@@ -27,9 +26,11 @@ public class Representative {
         return party;
     }
 
-    public List<String> getPhone() {
+    public String getPhone() {
         return phone;
     }
+
+    public String getChannels() { return channels; }
 
 
 }
