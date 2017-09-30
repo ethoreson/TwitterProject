@@ -94,37 +94,6 @@ public class ListOfRepsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getRepresentatives(String zipCode) {
-        final GoogleService googleService = new GoogleService();
-
-        googleService.findRepresentatives(zipCode, new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mRepresentatives = googleService.processResults(response);
-
-                ListOfRepsActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        mAdapter = new RepresentativeListAdapter(getApplicationContext(), mRepresentatives);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(ListOfRepsActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
-            }
-        });
-    }
-
     private void addToSharedPreferences(String zipCode) {
         mEditor.putString(Constants.PREFERENCES_ZIPCODE_KEY, zipCode).apply();
     }
