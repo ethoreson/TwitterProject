@@ -20,6 +20,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class RepresentativeListAdapter extends RecyclerView.Adapter<RepresentativeListAdapter.RepresentativeViewHolder> {
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
     private ArrayList<Representative> mRepresentatives = new ArrayList<>();
     private Context mContext;
 

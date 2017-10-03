@@ -1,7 +1,5 @@
 package com.epicodus.twitterproject.adapters;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +23,7 @@ import java.util.ArrayList;
 public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
-    public TextView mRepresentativeTextView;
+    //public TextView mRepresentativeTextView;
 
     View mView;
     Context mContext;
@@ -38,59 +36,41 @@ public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder im
     }
 
     public void bindRepresentative(Representative representative) {
-        mRepresentativeTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
+
         TextView nameTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
         TextView phoneTextView = (TextView) mView.findViewById(R.id.phoneTextView);
-        //TextView channelsTextView = (TextView) mView.findViewById(R.id.channelsTextView);
 
         nameTextView.setText(representative.getName());
         partyTextView.setText("Party: " + representative.getParty());
         phoneTextView.setText("Phone: " + representative.getPhone());
-        //channelsTextView.setText("Social Media: " + representative.getChannels());
-    }
-
-//    @Override
-//    public void onClick(View view) {
-//        final ArrayList<Representative> representatives = new ArrayList<>();
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPRESENTATIVES);
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    representatives.add(snapshot.getValue(Representative.class));
-//                }
-//                int itemPosition = getLayoutPosition();
-//
-//                Intent intent = new Intent(mContext, RepresentativeDetailActivity.class);
-//                intent.putExtra("position", itemPosition + "");
-//                intent.putExtra("representatives", Parcels.wrap(representatives));
-//
-//                mContext.startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-
-    @Override
-    public void onItemSelected() {
-        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
-                R.animator.drag_scale_on);
-        set.setTarget(itemView);
-        set.start();
     }
 
     @Override
-    public void onItemClear() {
-        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
-                R.animator.drag_scale_off);
-        set.setTarget(itemView);
-        set.start();
+    public void onClick(View view) {
+        final ArrayList<Representative> representatives = new ArrayList<>();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPRESENTATIVES);
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    representatives.add(snapshot.getValue(Representative.class));
+                }
+
+                int itemPosition = getLayoutPosition();
+
+                Intent intent = new Intent(mContext, RepresentativeDetailActivity.class);
+                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("representatives", Parcels.wrap(representatives));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }
+
 

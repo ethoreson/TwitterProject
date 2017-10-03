@@ -60,11 +60,10 @@ public class GoogleService {
                         phoneArray.add(phone);
                     }
                     String phone = representativeJSON.getString("phones");
-                    String channels = representativeJSON.getString("channels");
 
 
 
-                    Representative representative = new Representative(name, party, phone, channels);
+                    Representative representative = new Representative(name, party, phone);
                     representatives.add(representative);
                     Log.d("string", "processResults: " + representative);
                 }
