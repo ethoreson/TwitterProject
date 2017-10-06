@@ -1,11 +1,7 @@
-//package com.epicodus.twitterproject.util;
-//
-//import android.support.v7.widget.RecyclerView;
-//
-///**
-// * Created by Guest on 9/25/17.
-// */
-//
-//public interface OnStartDragListener {
-//    void onStartDrag(RecyclerView.ViewHolder viewHolder);
-//}
+package com.epicodus.twitterproject.util;
+
+import android.support.v7.widget.RecyclerView;
+
+public interface OnStartDragListener {
+    void onStartDrag(RecyclerView.ViewHolder viewHolder);
+}
