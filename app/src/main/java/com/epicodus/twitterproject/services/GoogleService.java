@@ -52,16 +52,7 @@ public class GoogleService {
                     JSONObject representativeJSON = officialsJSON.getJSONObject(i);
                     String name = representativeJSON.getString("name");
                     String party = representativeJSON.getString("party");
-
-                    ArrayList<String> phoneArray = new ArrayList<>();
-                    for (int j=0; j < officialsJSON.length(); j++) {
-                        JSONObject telephoneJSON = officialsJSON.getJSONObject(j);
-                        String phone = telephoneJSON.getString("phones");
-                        phoneArray.add(phone);
-                    }
                     String phone = representativeJSON.getString("phones");
-
-
 
                     Representative representative = new Representative(name, party, phone);
                     representatives.add(representative);

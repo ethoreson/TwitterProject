@@ -49,15 +49,18 @@
                 android:layout_marginTop="28dp" />
 
             <TextView
-                android:id="@+id/channelTextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/phoneTextView"
+                android:layout_width="387dp"
                 android:layout_height="wrap_content"
-                android:text="Placeholder channels"
-                android:textColor="@color/colorSecondaryText"
-                android:textStyle="italic"
-                android:layout_alignParentBottom="true"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="Placeholder Phone"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/representativePartyTextView"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="88dp" />
+                android:layout_marginTop="28dp" />
 
 
             <ImageView
