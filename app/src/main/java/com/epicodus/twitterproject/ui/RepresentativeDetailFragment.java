@@ -71,7 +71,7 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v == mPhoneLabel) {
-            Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(mRepresentative.getPhone()));
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mRepresentative.getPhone()));
             startActivity(phoneIntent);
         }
         if (v == mSaveRepresentativeButton) {
