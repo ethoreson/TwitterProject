@@ -64,7 +64,7 @@ public class RepresentativeDetailFragment extends Fragment implements View.OnCli
         mPartyLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
 
-        //mSaveRepresentativeButton.setOnClickListener(this);
+        mSaveRepresentativeButton.setOnClickListener(this);
         return view;
     }
 
