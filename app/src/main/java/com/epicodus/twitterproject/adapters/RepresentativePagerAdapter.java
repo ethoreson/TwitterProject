@@ -1,7 +1,5 @@
 package com.epicodus.twitterproject.adapters;
 
-//import android.app.FragmentManager;
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -9,9 +7,6 @@ import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.ui.RepresentativeDetailFragment;
 
 import java.util.ArrayList;
-
-//import android.support.v4.app.FragmentActivity;
-//import android.support.v4.app.FragmentPagerAdapter;
 
 public class RepresentativePagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Representative> mRepresentatives;
