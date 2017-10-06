@@ -12,10 +12,11 @@
             android:id="@+id/dragIcon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignLeft="@id/nameTextView"
-            android:layout_alignBottom="@id/nameTextView"
             android:gravity="bottom|left"
-            android:src="@drawable/ic_reorder_black_24dp.png"/>
+            android:src="@drawable/ic_reorder_black_24dp"/>
+            <!--android:layout_alignLeft="@id/nameTextView"-->
+            <!--android:layout_alignBottom="@id/nameTextView"-->
+
 
     </RelativeLayout>
 
@@ -55,7 +56,6 @@
             android:layout_below="@+id/partyTextView"
             android:text="phone number"
             android:textStyle="italic" />
-
 
     </LinearLayout>
 </LinearLayout>

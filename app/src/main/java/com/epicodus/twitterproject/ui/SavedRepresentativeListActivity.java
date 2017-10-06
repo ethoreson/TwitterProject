@@ -13,10 +13,8 @@ import com.epicodus.twitterproject.adapters.FirebaseRepresentativeViewHolder;
 import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.util.OnStartDragListener;
 import com.epicodus.twitterproject.util.SimpleItemTouchHelperCallback;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -24,8 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedRepresentativeListActivity extends AppCompatActivity implements OnStartDragListener {
-    private DatabaseReference mRepresentativeReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseRepresentativeListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;

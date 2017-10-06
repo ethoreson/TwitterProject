@@ -37,6 +37,7 @@ public class FirebaseRepresentativeListAdapter extends FirebaseRecyclerAdapter<R
         mChildEfventListener = mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                mRepresentatives.add(dataSnapshot.getValue(Representative.class));
 
             }
 
@@ -106,7 +107,7 @@ public class FirebaseRepresentativeListAdapter extends FirebaseRecyclerAdapter<R
         for (Representative representative : mRepresentatives) {
             int index = mRepresentatives.indexOf(representative);
             DatabaseReference ref = getRef(index);
-            //representative.setIndex(Integer.toString(index));
+            representative.setIndex(Integer.toString(index));
             ref.setValue(representative);
         }
     }
