@@ -15,6 +15,7 @@ import com.epicodus.twitterproject.util.OnStartDragListener;
 import com.epicodus.twitterproject.util.SimpleItemTouchHelperCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -22,6 +23,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedRepresentativeListActivity extends AppCompatActivity implements OnStartDragListener {
+    private DatabaseReference mRepresentativeReference;
     private FirebaseRepresentativeListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -34,16 +36,16 @@ public class SavedRepresentativeListActivity extends AppCompatActivity implement
         setContentView(R.layout.activity_list_of_reps);
         ButterKnife.bind(this);
 
-
-
-        //mRepresentativeReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPRESENTATIVES);
         setUpFirebaseAdapter();
     }
     private void setUpFirebaseAdapter() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        Query query = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPRESENTATIVES).child(uid).orderByChild(Constants.FIREBASE_QUERY_INDEX);
+        Query query = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_REPRESENTATIVES)
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
 
         mFirebaseAdapter = new FirebaseRepresentativeListAdapter(Representative.class, R.layout.representative_list_item_drag, FirebaseRepresentativeViewHolder.class, query, this, this);
