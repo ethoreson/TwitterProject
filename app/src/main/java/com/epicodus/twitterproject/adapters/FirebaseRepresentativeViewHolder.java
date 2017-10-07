@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
-    //public TextView mRepresentativeTextView;
+    public TextView mRepresentativeNameTextView;
 
     View mView;
     Context mContext;
@@ -36,12 +36,12 @@ public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder im
     }
 
     public void bindRepresentative(Representative representative) {
-
-        TextView nameTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
+        mRepresentativeNameTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
+        //TextView nameTextView = (TextView) mView.findViewById(R.id.representativeNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
         TextView phoneTextView = (TextView) mView.findViewById(R.id.phoneTextView);
 
-        nameTextView.setText(representative.getName());
+        //nameTextView.setText(representative.getName());
         partyTextView.setText("Party: " + representative.getParty());
         phoneTextView.setText("Phone: " + representative.getPhone());
     }

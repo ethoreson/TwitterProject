@@ -53,7 +53,6 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
         @Bind(R.id.representativeNameTextView) TextView mNameTextView;
         @Bind(R.id.partyTextView) TextView mPartyTextView;
         @Bind(R.id.phoneTextView) TextView mPhoneTextView;
-        @Bind(R.id.channelsTextView) TextView mChannelsTextView;
         private Context mContext;
 
         public RepresentativeViewHolder(View itemView) {
@@ -63,6 +62,12 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             itemView.setOnClickListener(this);
         }
 
+        public void bindRepresentative(Representative representative) {
+            mNameTextView.setText(representative.getName());
+            mPartyTextView.setText(representative.getParty());
+            mPhoneTextView.setText(String.valueOf(representative.getPhone()));
+        }
+
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
@@ -70,13 +75,6 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             intent.putExtra("position", itemPosition);
             intent.putExtra("representatives", Parcels.wrap(mRepresentatives));
             mContext.startActivity(intent);
-        }
-
-        public void bindRepresentative(Representative representative) {
-            mNameTextView.setText(representative.getName());
-            mPartyTextView.setText(representative.getParty());
-            mPhoneTextView.setText(String.valueOf(representative.getPhone()));
-           // mChannelsTextView.setText(String.valueOf(representative.getChannels()));
         }
     }
 }

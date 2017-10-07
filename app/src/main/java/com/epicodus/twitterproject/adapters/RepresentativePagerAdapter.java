@@ -1,5 +1,6 @@
 package com.epicodus.twitterproject.adapters;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -17,7 +18,7 @@ public class RepresentativePagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public android.support.v4.app.Fragment getItem(int position) {
+    public Fragment getItem(int position) {
         return RepresentativeDetailFragment.newInstance(mRepresentatives.get(position));
     }
 
