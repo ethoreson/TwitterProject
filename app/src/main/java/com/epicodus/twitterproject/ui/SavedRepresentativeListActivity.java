@@ -38,7 +38,7 @@ public class SavedRepresentativeListActivity extends AppCompatActivity {
     }
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Representative, FirebaseRepresentativeViewHolder>
-                (Representative.class, R.layout.representative_list_item, FirebaseRepresentativeViewHolder.class, mRepresentativeReference) {
+                (Representative.class, R.layout.representative_list_item_drag, FirebaseRepresentativeViewHolder.class, mRepresentativeReference) {
 
             @Override
             protected void populateViewHolder(FirebaseRepresentativeViewHolder viewHolder,
