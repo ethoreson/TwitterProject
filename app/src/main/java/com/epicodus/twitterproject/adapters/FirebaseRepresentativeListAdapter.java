@@ -17,9 +17,7 @@ public class FirebaseRepresentativeListAdapter extends FirebaseRecyclerAdapter<R
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
 
-    public FirebaseRepresentativeListAdapter(Class<Representative> modelClass, int modelLayout,
-                                             Class<FirebaseRepresentativeViewHolder> viewHolderClass,
-                                             Query ref, OnStartDragListener onStartDragListener, Context context) {
+    public FirebaseRepresentativeListAdapter(Class<Representative> modelClass, int modelLayout, Class<FirebaseRepresentativeViewHolder> viewHolderClass, Query ref, OnStartDragListener onStartDragListener, Context context) {
         super(modelClass, modelLayout, viewHolderClass, ref);
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
@@ -27,11 +25,9 @@ public class FirebaseRepresentativeListAdapter extends FirebaseRecyclerAdapter<R
     }
 
     @Override
-    protected void populateViewHolder(FirebaseRepresentativeViewHolder viewHolder, Representative model, int position) {
+    protected void populateViewHolder(final FirebaseRepresentativeViewHolder viewHolder, Representative model, int position) {
         viewHolder.bindRepresentative(model);
-
-        viewHolder.mRepresentativeNameTextView.setOnTouchListener(new View.OnTouchListener() {
-
+        viewHolder.mReorderImage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {

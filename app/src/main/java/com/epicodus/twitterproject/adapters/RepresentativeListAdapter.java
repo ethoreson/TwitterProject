@@ -62,12 +62,6 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             itemView.setOnClickListener(this);
         }
 
-        public void bindRepresentative(Representative representative) {
-            mNameTextView.setText(representative.getName());
-            mPartyTextView.setText(representative.getParty());
-            mPhoneTextView.setText(String.valueOf(representative.getPhone()));
-        }
-
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
@@ -75,6 +69,12 @@ public class RepresentativeListAdapter extends RecyclerView.Adapter<Representati
             intent.putExtra("position", itemPosition);
             intent.putExtra("representatives", Parcels.wrap(mRepresentatives));
             mContext.startActivity(intent);
+        }
+
+        public void bindRepresentative(Representative representative) {
+            mNameTextView.setText(representative.getName());
+            mPartyTextView.setText(representative.getParty());
+            mPhoneTextView.setText(String.valueOf(representative.getPhone()));
         }
     }
 }
