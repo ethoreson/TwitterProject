@@ -10,6 +10,7 @@
         android:background="#ffffff"
         android:layout_height="wrap_content"
         android:padding="10dp">
+
         <TextView
             android:id="@+id/representativeNameTextView"
             android:layout_width="wrap_content"
@@ -20,24 +21,24 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/partyTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Party"
+            android:id="@+id/partyTextView"
+            android:layout_below="@+id/representativeNameTextView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/representativeNameTextView"
-            android:text="Party"
             android:textSize="20dp"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/phoneTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Phone"
+            android:id="@+id/phoneTextView"
+            android:layout_below="@+id/partyTextView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/partyTextView"
-            android:text="Phone"
             android:textSize="20dp"
             android:textStyle="italic" />
 

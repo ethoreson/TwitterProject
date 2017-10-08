@@ -74,5 +74,3 @@ public class FirebaseRepresentativeViewHolder extends RecyclerView.ViewHolder im
         });
     }
 }
-
-

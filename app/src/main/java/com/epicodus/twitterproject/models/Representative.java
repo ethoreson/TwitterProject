@@ -7,6 +7,7 @@ public class Representative {
     String name;
     String party;
     String phone;
+    private String pushId;
 
     public Representative() {}
 
@@ -27,6 +28,10 @@ public class Representative {
     public String getPhone() {
         return phone;
     }
+
+    public String getPushId(){ return pushId; }
+
+    public void setPushId(String pushId){ this.pushId = pushId; }
 
 }
 
