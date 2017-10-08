@@ -1,6 +1,9 @@
 package com.epicodus.twitterproject.adapters;
 
 import android.content.Context;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.epicodus.twitterproject.models.Representative;
 import com.epicodus.twitterproject.util.ItemTouchHelperAdapter;
@@ -22,8 +25,17 @@ public class FirebaseRepresentativeListAdapter extends FirebaseRecyclerAdapter<R
     }
 
     @Override
-    protected void populateViewHolder(FirebaseRepresentativeViewHolder viewHolder, Representative model, int position) {
+    protected void populateViewHolder(final FirebaseRepresentativeViewHolder viewHolder, Representative model, int position) {
         viewHolder.bindRepresentative(model);
+        viewHolder.mReorderImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+                    mOnStartDragListener.onStartDrag(viewHolder);
+                }
+                return false;
+            }
+        });
     }
 
     @Override
